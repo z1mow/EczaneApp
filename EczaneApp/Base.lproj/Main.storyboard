@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Kn2-Pn-PZN">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_3" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
@@ -14,47 +14,67 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="EczaneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="BHy-YL-YKG">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="BHy-YL-YKG">
+                                <rect key="frame" x="0.0" y="106" width="402" height="768"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PharmacyCell" id="5dY-YQ-QIL">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="402" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5dY-YQ-QIL" id="JNo-Qo-7qz">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="402" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uXp-EZ-Qgu">
+                                <rect key="frame" x="0.0" y="106" width="402" height="768"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="BHy-YL-YKG" secondAttribute="bottom" id="5hI-Jf-lSh"/>
+                            <constraint firstItem="uXp-EZ-Qgu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="81l-2f-aPo"/>
+                            <constraint firstItem="BHy-YL-YKG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="106" id="IGo-KV-82K"/>
+                            <constraint firstItem="uXp-EZ-Qgu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LwD-rp-LNB"/>
+                            <constraint firstItem="BHy-YL-YKG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kns-I8-z7I"/>
+                            <constraint firstItem="uXp-EZ-Qgu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kol-q3-37q"/>
+                            <constraint firstAttribute="bottom" secondItem="uXp-EZ-Qgu" secondAttribute="bottom" id="mg2-ju-eOJ"/>
+                            <constraint firstItem="BHy-YL-YKG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tiJ-g6-vr8"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="2yw-UO-xAM"/>
+                    <navigationItem key="navigationItem" id="2yw-UO-xAM">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="list.bullet" catalog="system" id="MuZ-oH-d9m">
+                            <connections>
+                                <action selector="rightBarButton:" destination="BYZ-38-t0r" id="T56-aV-TjA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="mapView" destination="uXp-EZ-Qgu" id="KAT-ub-Xjn"/>
                         <outlet property="tableView" destination="BHy-YL-YKG" id="H38-ne-bzH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1208.3969465648854" y="60.563380281690144"/>
+            <point key="canvasLocation" x="1207.4626865671642" y="60.411899313501138"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="McM-H8-0bz">
             <objects>
                 <viewController storyboardIdentifier="MapViewController" id="Y5X-rt-feh" customClass="MapViewController" customModule="EczaneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AOh-fL-4iI">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAj-8H-acj">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <rect key="frame" x="0.0" y="106" width="402" height="768"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
                         </subviews>
@@ -64,7 +84,7 @@
                             <constraint firstItem="zAj-8H-acj" firstAttribute="leading" secondItem="6In-bK-rE5" secondAttribute="leading" id="3Td-xu-Rxp"/>
                             <constraint firstItem="zAj-8H-acj" firstAttribute="trailing" secondItem="6In-bK-rE5" secondAttribute="trailing" id="BLH-bA-DIx"/>
                             <constraint firstAttribute="bottom" secondItem="zAj-8H-acj" secondAttribute="bottom" id="UZP-db-E3u"/>
-                            <constraint firstItem="zAj-8H-acj" firstAttribute="top" secondItem="AOh-fL-4iI" secondAttribute="top" id="kgv-qu-L2d"/>
+                            <constraint firstItem="zAj-8H-acj" firstAttribute="top" secondItem="AOh-fL-4iI" secondAttribute="top" constant="106" id="kgv-qu-L2d"/>
                         </constraints>
                     </view>
                     <connections>
@@ -73,15 +93,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tEr-dk-EeC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2085" y="61"/>
+            <point key="canvasLocation" x="2083.5820895522388" y="60.411899313501138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NXV-vm-0uG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kn2-Pn-PZN" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Kn2-Pn-PZN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="r0P-by-RyQ">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="62" width="402" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -95,6 +115,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="list.bullet" catalog="system" width="128" height="87"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
