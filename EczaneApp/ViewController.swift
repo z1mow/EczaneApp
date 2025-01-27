@@ -58,7 +58,6 @@ class ViewController: UIViewController {
     ]
     
     override func viewDidLoad() {
-        navigationItem.title = "Nöbetçi Eczaneler"
         super.viewDidLoad()
         setupViews()
         setupMap()
@@ -68,12 +67,12 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         mapView.alpha = 0
+        navigationItem.title = "Nöbetçi Eczaneler"
     }
     
     private func setupMap() {
         mapView.delegate = self
         
-        // Eczaneleri haritaya ekle
         for pharmacy in pharmacies {
             let annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: pharmacy.latitude, longitude: pharmacy.longitude)
@@ -82,7 +81,6 @@ class ViewController: UIViewController {
             mapView.addAnnotation(annotation)
         }
         
-        // Haritayı eczanelerin olduğu bölgeye odakla
         if let firstPharmacy = pharmacies.first {
             let region = MKCoordinateRegion(
                 center: CLLocationCoordinate2D(latitude: firstPharmacy.latitude, longitude: firstPharmacy.longitude),
@@ -115,12 +113,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate, MKMapViewD
     }
     
     func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
-        // Seçilen eczaneyi bul
         if let pharmacy = pharmacies.first(where: {
             $0.latitude == annotation.coordinate.latitude &&
             $0.longitude == annotation.coordinate.longitude
         }) {
-            // Detay sayfasına git
             if let detailVC = storyboard?.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController {
                 detailVC.selectedPharmacy = pharmacy
                 navigationController?.pushViewController(detailVC, animated: true)

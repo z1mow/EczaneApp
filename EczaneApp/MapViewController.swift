@@ -16,7 +16,19 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupNavigationBar()
+        setupMap()
+    }
+    
+    private func setupNavigationBar() {
+        let directionsButton = UIBarButtonItem(image: UIImage(systemName: "location.fill"),
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(directionsButtonTapped))
+        navigationItem.rightBarButtonItem = directionsButton
+    }
+    
+    private func setupMap() {
         if let pharmacy = selectedPharmacy {
             title = pharmacy.name
             
@@ -31,5 +43,19 @@ class MapViewController: UIViewController {
             let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
             mapView.setRegion(region, animated: true)
         }
+    }
+    
+    @objc private func directionsButtonTapped() {
+        guard let pharmacy = selectedPharmacy else { return }
+        
+        let coordinate = CLLocationCoordinate2D(latitude: pharmacy.latitude, longitude: pharmacy.longitude)
+        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate))
+        mapItem.name = pharmacy.name
+        
+        let launchOptions = [
+            MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving
+        ]
+        
+        mapItem.openInMaps(launchOptions: launchOptions)
     }
 } 

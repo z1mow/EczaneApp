@@ -87,13 +87,18 @@
                             <constraint firstItem="zAj-8H-acj" firstAttribute="top" secondItem="AOh-fL-4iI" secondAttribute="top" constant="106" id="kgv-qu-L2d"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="hya-Ci-izj">
+                        <barButtonItem key="rightBarButtonItem" image="location.fill" catalog="system" id="Q81-Zs-QW0"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="zAj-8H-acj" id="h5v-BO-cTN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tEr-dk-EeC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2083.5820895522388" y="60.411899313501138"/>
+            <point key="canvasLocation" x="3002.9850746268653" y="60.411899313501138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NXV-vm-0uG">
@@ -113,9 +118,28 @@
             </objects>
             <point key="canvasLocation" x="281.67938931297709" y="60.563380281690144"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EjA-oD-eag">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="I18-QA-Jrc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c3R-nB-v3J">
+                        <rect key="frame" x="0.0" y="62" width="402" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y5X-rt-feh" kind="relationship" relationship="rootViewController" id="qUH-Vz-Baq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YW7-dz-Q88" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2083.5820895522388" y="60.411899313501138"/>
+        </scene>
     </scenes>
     <resources>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
+        <image name="location.fill" catalog="system" width="128" height="119"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
